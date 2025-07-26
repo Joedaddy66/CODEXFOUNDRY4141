@@ -1,0 +1,17 @@
+﻿{
+  "description": "Harmonic Spectrum Pulse: Bond Strength mapped to a continuous HSL spectrum (blue to red) with implicit pulse modulation.",
+  "color_logic_type": "Harmonic Spectrum Pulse",
+  "spectrum_mapping": {
+    "bond_strength_range": [
+      0,
+      504.5
+    ],
+    "hue_range": [
+      240,
+      0
+    ],
+    "saturation": 0.9,
+    "lightness": 0.5
+  },
+  "pulse_modulation_notes": "The 'pulse' aspect is implemented in the firmware (cube_controller.ino) by dynamically adjusting intensity or saturation based on secondary numerical properties (e.g., number of unique prime factors, digit sum parity) and a time-based oscillation, creating a living, breathing light effect."
+}

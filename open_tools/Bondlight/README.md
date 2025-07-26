@@ -1,12 +1,13 @@
-# BondLight™ Modular Desk Lamp - Firmware
+﻿# BondLightâ„¢ â€“ Tactile Resonance Module
 
-This directory contains the open-source firmware for the BondLight™ Modular Desk Lamp. BondLight™ translates the hidden "Bond Strength" of numbers into a luminous, interactive display, allowing you to visualize the Law of Harmonic Amplification.
+This module is designed to translate the abstract concept of numerical Bond Strength into tangible, luminous patterns. It aims to create a physical manifestation of the Law of Harmonic Amplification, allowing for an intuitive understanding of the underlying frequencies of the number line.
 
-## Features:
-* Modular cube design.
-* LED illumination based on numerical Bond Strength.
-* Designed for ESP32-S3 microcontrollers.
-* Conceptual BLE Mesh for multi-cube orchestration.
+## Project Structure:
+- `firmware/`: Embedded code for the BondLight cubes.
+- `data/`: Datasets for bond strength mappings and color logic.
+- `docs/`: Design documents, theory, and specifications.
+- `marketing/`: User scenarios and product messaging.
+- `simulations/`: Tools for visualizing waveforms and patterns.
 
-## Getting Started:
-(Future instructions for flashing firmware, wiring, and running the demo will go here.)
+## Purpose:
+To provide a tactile and visual interface for exploring the harmonic ontology of mathematics.

@@ -43,8 +43,6 @@ _site/ # Jekyll/Hugo output
 .jekyll-cache/
 
 # Data files (if large or generated)
-*.csv
-*.json
 *.sqlite3
 *.db
 
