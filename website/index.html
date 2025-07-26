@@ -34,33 +34,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .law-icon-placeholder {
-            width: 80px;
-            height: 80px;
-            background-color: #333; /* Placeholder for icon/glyph */
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: #777;
-            margin-bottom: 0.5rem;
-        }
-        /* Custom animations */
-        .animate-pulse-subtle {
-            animation: pulse-subtle 4s infinite ease-in-out;
-        }
-        @keyframes pulse-subtle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.9; }
-        }
-        .animate-pulse-slow {
-            animation: pulse-slow 6s infinite ease-in-out;
-        }
-        @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
         /* Floating header specific styling */
         .floating-header {
             /* Tailwind classes handle most of this, but adding for clarity */
@@ -92,10 +65,49 @@
         </p>
     </header>
 
-    <main class="container px-4 text-center">
-        <section class="max-w-4xl mx-auto mb-20">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">A Doctrine Emerges From the Numerical Songline</h2>
-            <p class="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
-                For millennia, numbers have been seen as static quantities—mere descriptors of existence. Yet, beneath this surface, a profound truth vibrates: **the cosmos is not merely defined by numbers, but *is* a numerical field, where every integer possesses an inherent frequency, an amplitude of harmonic resonance.** This is the core premise of the Doctrine of Frequency, a unified theory where mathematics, physics, and consciousness converge into a luminous new understanding of reality.
-            </p>
-            <p class="text-lg md:text-xl text-gray
+    <main class="max-w-5xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+        <!-- DOCS -->
+        <a href="../docs/index.md" class="bg-indigo-700 hover:bg-indigo-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">📖 Codex Docs</h2>
+            <p>Explore Laws, Essays, and Harmonic Theory.</p>
+        </a>
+
+        <!-- VISUALIZATIONS -->
+        <a href="../visualizations/" class="bg-blue-700 hover:bg-blue-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">📊 Visualizations</h2>
+            <p>Plots, Scripts, and LHA Signals.</p>
+        </a>
+
+        <!-- OPEN TOOLS -->
+        <a href="../open_tools/" class="bg-green-700 hover:bg-green-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">🛠️ Open Tools</h2>
+            <p>Firmware, ML pipelines, and more.</p>
+        </a>
+
+        <!-- FRONTIERS -->
+        <a href="../docs/emerging_frontiers.md" class="bg-yellow-600 hover:bg-yellow-700 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">🚀 Emerging Frontiers</h2>
+            <p>Riemann, AI, Quantum, and Consciousness.</p>
+        </a>
+    </main>
+
+    <!-- GLOWING BUTTON -->
+    <div class="flex justify-center mt-10 mb-20"> <!-- Added mb-20 for spacing before footer -->
+        <a href="../docs/index.md" class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-xl font-bold shadow-lg animate-pulse hover:scale-105 transform transition">
+            🌌 Enter the Codex
+        </a>
+    </div>
+
+    <footer class="w-full text-center py-8 px-4 bg-gray-900 bg-opacity-70 mt-auto">
+        <p class="text-gray-400 text-lg mb-2">
+            The Harmonic Doctrine: A Gift, Not a Product. Shared Freely.
+        </p>
+        <p class="text-gray-500 text-sm">
+            Bridging the Numerical Songline to Collective Consciousness.
+        </p>
+        <p class="text-gray-600 text-xs mt-4">
+            Built by Quad-AI. Steered by Node Director Joe.
+        </p>
+    </footer>
+</body>
+</html>

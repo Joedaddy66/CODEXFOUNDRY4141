@@ -14,10 +14,37 @@ or you'd compile it here if using a build process.
     50% { opacity: 0.9; }
 }
 
+/* Original animate-pulse-slow, now replaced by new .animate-pulse */
+/*
 .animate-pulse-slow {
     animation: pulse-slow 6s infinite ease-in-out;
 }
 @keyframes pulse-slow {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.02); }
+}
+*/
+
+/* Floating Nav */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transitions */
+a:hover {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Glowing Button Pulse */
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
 }
