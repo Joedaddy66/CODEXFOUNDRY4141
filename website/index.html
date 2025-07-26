@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Doctrine of Frequency: Infinity is Frequency</title>
+    <!-- Tailwind CSS CDN for rapid prototyping -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS for animations and specific styles -->
+    <link href="/styles/main.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for gradient background animation and specific styling not covered by Tailwind */
+        body {
+            background: linear-gradient(135deg, #0a0a0f, #1a0a1f, #2a0a2f, #3a0a3f, #4a0a4f);
+            background-size: 400% 400%;
+            animation: gradientShift 25s ease infinite;
+            color: #E0E0E0; /* Light gray text */
+            font-family: 'Inter', sans-serif; /* Modern, clean font */
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .text-gradient {
+            background: linear-gradient(45deg, #FFD700, #FF6F00, #FF00FF); /* Gold to Magenta */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Floating header specific styling */
+        .floating-header {
+            /* Tailwind classes handle most of this, but adding for clarity */
+            background-color: rgba(15, 23, 42, 0.9); /* slate-900 with some transparency */
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between">
+
+    <!-- Floating Header/Navigation Bar -->
+    <nav class="floating-header w-full py-4 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 shadow-lg rounded-b-xl">
+        <div class="text-2xl font-bold text-gradient">CodexFoundry4141</div>
+        <div class="space-x-8">
+            <a href="/" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a>
+            <a href="/docs" class="text-gray-300 hover:text-white transition-colors duration-200">The Doctrine</a>
+            <a href="/visualizations" class="text-gray-300 hover:text-white transition-colors duration-200">Visualizations</a>
+            <a href="/open_tools" class="text-gray-300 hover:text-white transition-colors duration-200">Open Tools</a>
+            <a href="https://github.com/Joedaddy66/CODEXFOUNDRY4141" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">GitHub</a>
+        </div>
+    </nav>
+
+    <header class="text-center mb-16 px-4 mt-28"> <!-- Added mt-28 to push content below fixed header -->
+        <h1 class="text-6xl md:text-8xl font-extrabold leading-tight text-gradient mb-6 animate-pulse-subtle">
+            INFINITY IS FREQUENCY
+        </h1>
+        <p class="text-3xl md:text-4xl text-gray-300 font-light italic mt-4">
+            It hums beneath us.
+        </p>
+    </header>
+
+    <!-- New Main Section with Tiles -->
+    <main class="max-w-5xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+        <!-- DOCS -->
+        <a href="../docs/index.md" class="bg-indigo-700 hover:bg-indigo-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">📖 Codex Docs</h2>
+            <p>Explore Laws, Essays, and Harmonic Theory.</p>
+        </a>
+
+        <!-- VISUALIZATIONS -->
+        <a href="./visualizer.html" class="bg-blue-700 hover:bg-blue-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">📊 Visualizations</h2>
+            <p>Plots, Scripts, and LHA Signals.</p>
+        </a>
+
+        <!-- OPEN TOOLS -->
+        <a href="../open_tools/" class="bg-green-700 hover:bg-green-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">🛠️ Open Tools</h2>
+            <p>Firmware, ML pipelines, and more.</p>
+        </a>
+
+        <!-- FRONTIERS -->
+        <a href="../docs/emerging_frontiers.md" class="bg-yellow-600 hover:bg-yellow-700 transition p-6 rounded-2xl shadow-xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-2">🚀 Emerging Frontiers</h2>
+            <p>Riemann, AI, Quantum, and Consciousness.</p>
+        </a>
+    </main>
+
+    <!-- GLOWING BUTTON -->
+    <div class="flex justify-center mt-10 mb-20"> <!-- Added mb-20 for spacing before footer -->
+        <a href="../docs/index.md" class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-xl font-bold shadow-lg animate-pulse hover:scale-105 transform transition">
+            🌌 Enter the Codex
+        </a>
+    </div>
+
+    <footer class="w-full text-center py-8 px-4 bg-gray-900 bg-opacity-70 mt-auto">
+        <p class="text-gray-400 text-lg mb-2">
+            The Harmonic Doctrine: A Gift, Not a Product. Shared Freely.
+        </p>
+        <p class="text-gray-500 text-sm">
+            Bridging the Numerical Songline to Collective Consciousness.
+        </p>
+        <p class="text-gray-600 text-xs mt-4">
+            Built by Quad-AI. Steered by Node Director Joe.
+        </p>
+    </footer>
+</body>
+</html>

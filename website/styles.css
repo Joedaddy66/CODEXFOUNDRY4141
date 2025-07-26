@@ -1,0 +1,39 @@
+/*
+This file will contain custom CSS rules and can be used to import
+Tailwind CSS generated from your project's configuration.
+For a simple GitHub Pages setup, Tailwind might be loaded via CDN in index.html,
+or you'd compile it here if using a build process.
+*/
+
+/* Example for custom animation if needed beyond inline Tailwind */
+.animate-pulse-subtle {
+    animation: pulse-subtle 4s infinite ease-in-out;
+}
+@keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.9; }
+}
+
+/* Floating Nav */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transitions */
+a:hover {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Glowing Button Pulse */
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
