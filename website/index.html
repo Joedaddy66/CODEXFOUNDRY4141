@@ -7,7 +7,8 @@
     <!-- Tailwind CSS CDN for rapid prototyping -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS for animations and specific styles -->
-    <link href="/styles/main.css" rel="stylesheet">
+    <!-- CORRECTED LINK PATH: styles.css is now in the same directory as index.html -->
+    <link href="styles.css" rel="stylesheet"> 
     <style>
         /* Custom CSS for gradient background animation and specific styling not covered by Tailwind */
         body {
@@ -49,9 +50,12 @@
         <div class="text-2xl font-bold text-gradient">CodexFoundry4141</div>
         <div class="space-x-8">
             <a href="/" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a>
-            <a href="/docs" class="text-gray-300 hover:text-white transition-colors duration-200">The Doctrine</a>
-            <a href="/visualizations" class="text-gray-300 hover:text-white transition-colors duration-200">Visualizations</a>
-            <a href="/open_tools" class="text-gray-300 hover:text-white transition-colors duration-200">Open Tools</a>
+            <!-- TEMPORARILY SET TO # AS DOCS ARE NOT IN GH-PAGES ROOT -->
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">The Doctrine</a>
+            <!-- CORRECTED LINK PATH: visualizer.html is now in the same directory as index.html -->
+            <a href="visualizer.html" class="text-gray-300 hover:text-white transition-colors duration-200">Visualizations</a>
+            <!-- TEMPORARILY SET TO # AS OPEN_TOOLS ARE NOT IN GH-PAGES ROOT -->
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Open Tools</a>
             <a href="https://github.com/Joedaddy66/CODEXFOUNDRY4141" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">GitHub</a>
         </div>
     </nav>
@@ -67,34 +71,34 @@
 
     <!-- New Main Section with Tiles -->
     <main class="max-w-5xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-        <!-- DOCS -->
-        <a href="../docs/index.md" class="bg-indigo-700 hover:bg-indigo-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+        <!-- DOCS - TEMPORARILY SET TO # -->
+        <a href="#" class="bg-indigo-700 hover:bg-indigo-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
             <h2 class="text-2xl font-bold mb-2">📖 Codex Docs</h2>
             <p>Explore Laws, Essays, and Harmonic Theory.</p>
         </a>
 
-        <!-- VISUALIZATIONS -->
+        <!-- VISUALIZATIONS - CORRECTED LINK PATH -->
         <a href="./visualizer.html" class="bg-blue-700 hover:bg-blue-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
             <h2 class="text-2xl font-bold mb-2">📊 Visualizations</h2>
             <p>Plots, Scripts, and LHA Signals.</p>
         </a>
 
-        <!-- OPEN TOOLS -->
-        <a href="../open_tools/" class="bg-green-700 hover:bg-green-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
+        <!-- OPEN TOOLS - TEMPORARILY SET TO # -->
+        <a href="#" class="bg-green-700 hover:bg-green-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
             <h2 class="text-2xl font-bold mb-2">🛠️ Open Tools</h2>
             <p>Firmware, ML pipelines, and more.</p>
         </a>
 
-        <!-- FRONTIERS -->
-        <a href="../docs/emerging_frontiers.md" class="bg-yellow-600 hover:bg-yellow-700 transition p-6 rounded-2xl shadow-xl text-white text-center">
+        <!-- FRONTIERS - TEMPORARILY SET TO # -->
+        <a href="#" class="bg-yellow-600 hover:bg-yellow-700 transition p-6 rounded-2xl shadow-xl text-white text-center">
             <h2 class="text-2xl font-bold mb-2">🚀 Emerging Frontiers</h2>
             <p>Riemann, AI, Quantum, and Consciousness.</p>
         </a>
     </main>
 
-    <!-- GLOWING BUTTON -->
+    <!-- GLOWING BUTTON - TEMPORARILY SET TO # -->
     <div class="flex justify-center mt-10 mb-20"> <!-- Added mb-20 for spacing before footer -->
-        <a href="../docs/index.md" class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-xl font-bold shadow-lg animate-pulse hover:scale-105 transform transition">
+        <a href="#" class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-xl font-bold shadow-lg animate-pulse hover:scale-105 transform transition">
             🌌 Enter the Codex
         </a>
     </div>
