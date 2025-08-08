@@ -1,0 +1,32 @@
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+import pandas as pd
+import random
+import os
+
+app = FastAPI()
+
+CSV_PATH = "sample_keys.csv"
+
+def generate_sample_csv():
+    data = {
+        'Index': list(range(1, 101)),
+        'Modulus': [random.randint(int(1e10), int(1e12)) for _ in range(100)],
+        'Exponent': [random.choice([3, 65537]) for _ in range(100)]
+    }
+    df = pd.DataFrame(data)
+    df.to_csv(CSV_PATH, index=False)
+    print(f"{CSV_PATH} generated successfully.")
+
+# Generate the file if it doesn't exist
+if not os.path.exists(CSV_PATH):
+    generate_sample_csv()
+
+@app.get("/")
+def read_root():
+    return {"message": "RSA Key Sample API running."}
+
+@app.get("/keys")
+def get_keys():
+    df = pd.read_csv(CSV_PATH)
+    return JSONResponse(content=df.to_dict(orient="records"))
