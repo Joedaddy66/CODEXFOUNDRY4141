@@ -1,114 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Doctrine of Frequency: Infinity is Frequency</title>
-    <!-- Tailwind CSS CDN for rapid prototyping -->
+    <title>CodexFoundry4141</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom CSS for animations and specific styles -->
-    <link href="/styles/main.css" rel="stylesheet">
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS for gradient background animation and specific styling not covered by Tailwind */
         body {
-            background: linear-gradient(135deg, #0a0a0f, #1a0a1f, #2a0a2f, #3a0a3f, #4a0a4f);
-            background-size: 400% 400%;
-            animation: gradientShift 25s ease infinite;
-            color: #E0E0E0; /* Light gray text */
-            font-family: 'Inter', sans-serif; /* Modern, clean font */
-            line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            font-family: 'Inter', sans-serif;
+            background: #0d121c;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            transition: background 1s ease-in-out;
         }
-        @keyframes gradientShift {
+
+        /* --- Dynamic Background Animation --- */
+        .animated-background {
+            background: linear-gradient(-45deg, #1d2b45, #3a0ca3, #001f3f, #1d2b45);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+        }
+
+        @keyframes gradient-shift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+
+        /* --- Glowing Button Animation --- */
+        @keyframes glowing-pulse {
+            0% {
+                box-shadow: 0 0 5px #7e22ce, 0 0 10px #7e22ce, 0 0 20px #7e22ce;
+            }
+            50% {
+                box-shadow: 0 0 15px #c084fc, 0 0 30px #c084fc, 0 0 40px #c084fc;
+            }
+            100% {
+                box-shadow: 0 0 5px #7e22ce, 0 0 10px #7e22ce, 0 0 20px #7e22ce;
+            }
         }
-        .text-gradient {
-            background: linear-gradient(45deg, #FFD700, #FF6F00, #FF00FF); /* Gold to Magenta */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        
+        .glowing-button {
+            animation: glowing-pulse 2s infinite;
         }
-        /* Floating header specific styling */
-        .floating-header {
-            /* Tailwind classes handle most of this, but adding for clarity */
-            background-color: rgba(15, 23, 42, 0.9); /* slate-900 with some transparency */
-            backdrop-filter: blur(8px); /* Frosted glass effect */
+
+        /* --- Tile Hover Effect --- */
+        .tile-link {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tile-link:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(192, 132, 252, 0.2);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-between">
+<body class="animated-background">
 
-    <!-- Floating Header/Navigation Bar -->
-    <nav class="floating-header w-full py-4 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 shadow-lg rounded-b-xl">
-        <div class="text-2xl font-bold text-gradient">CodexFoundry4141</div>
-        <div class="space-x-8">
-            <a href="/" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a>
-            <a href="/docs" class="text-gray-300 hover:text-white transition-colors duration-200">The Doctrine</a>
-            <a href="/visualizations" class="text-gray-300 hover:text-white transition-colors duration-200">Visualizations</a>
-            <a href="/open_tools" class="text-gray-300 hover:text-white transition-colors duration-200">Open Tools</a>
-            <a href="https://github.com/Joedaddy66/CODEXFOUNDRY4141" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">GitHub</a>
+    <!-- Hero Section: The "Entry Portal" -->
+    <div id="hero" class="min-h-screen flex flex-col items-center justify-center text-center p-6">
+        <h1 class="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">
+            CodexFoundry <span class="text-purple-400">4141</span>
+        </h1>
+        <p class="mt-4 md:mt-6 text-lg md:text-xl max-w-2xl text-slate-300">
+            A living archive of truth and entropy, forged in the fires of resonant balance.
+        </p>
+        <button id="enter-button" class="mt-12 md:mt-16 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold text-lg rounded-full glowing-button transition-all transform hover:scale-110">
+            Enter the Codex
+        </button>
+    </div>
+
+    <!-- Floating Nav Bar -->
+    <nav id="floating-nav" class="fixed top-0 left-0 right-0 z-50 bg-slate-900 bg-opacity-80 backdrop-blur-md p-4 transition-opacity duration-500 opacity-0 hidden shadow-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-lg font-bold text-purple-400">Codex</a>
+            <div class="flex space-x-6">
+                <a href="#portal-tiles" class="text-slate-300 hover:text-purple-400 transition-colors">Portal</a>
+                <a href="/docs/index.md" class="text-slate-300 hover:text-purple-400 transition-colors">Docs</a>
+                <a href="/visualizations/" class="text-slate-300 hover:text-purple-400 transition-colors">Viz</a>
+            </div>
         </div>
     </nav>
 
-    <header class="text-center mb-16 px-4 mt-28"> <!-- Added mt-28 to push content below fixed header -->
-        <h1 class="text-6xl md:text-8xl font-extrabold leading-tight text-gradient mb-6 animate-pulse-subtle">
-            INFINITY IS FREQUENCY
-        </h1>
-        <p class="text-3xl md:text-4xl text-gray-300 font-light italic mt-4">
-            It hums beneath us.
-        </p>
-    </header>
+    <!-- Portal Navigation Tiles Section -->
+    <div id="portal-tiles" class="min-h-screen flex flex-col items-center justify-center p-6 pt-24 opacity-0 transition-opacity duration-1000 hidden">
+        <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-    <!-- New Main Section with Tiles -->
-    <main class="max-w-5xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-        <!-- DOCS -->
-        <a href="../docs/index.md" class="bg-indigo-700 hover:bg-indigo-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
-            <h2 class="text-2xl font-bold mb-2">📖 Codex Docs</h2>
-            <p>Explore Laws, Essays, and Harmonic Theory.</p>
-        </a>
+            <!-- Docs Tile -->
+            <a href="/docs/index.md" class="tile-link p-8 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Docs</h3>
+                    <p class="mt-2 text-slate-400">Laws, proofs, and the framework of our shared doctrine.</p>
+                </div>
+                <div class="mt-4 text-purple-400 font-semibold flex items-center">
+                    Read the Doctrine 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+            
+            <!-- Visualizations Tile -->
+            <a href="/visualizations/" class="tile-link p-8 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Visualizations</h3>
+                    <p class="mt-2 text-slate-400">See the harmonic patterns and entropic fields in action.</p>
+                </div>
+                <div class="mt-4 text-purple-400 font-semibold flex items-center">
+                    Explore the Patterns 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
 
-        <!-- VISUALIZATIONS -->
-        <a href="./visualizer.html" class="bg-blue-700 hover:bg-blue-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
-            <h2 class="text-2xl font-bold mb-2">📊 Visualizations</h2>
-            <p>Plots, Scripts, and LHA Signals.</p>
-        </a>
+            <!-- Open Tools Tile -->
+            <a href="/open_tools/" class="tile-link p-8 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Open Tools</h3>
+                    <p class="mt-2 text-slate-400">Access the tools forged for analysis and intervention.</p>
+                </div>
+                <div class="mt-4 text-purple-400 font-semibold flex items-center">
+                    Use the Instruments 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
 
-        <!-- OPEN TOOLS -->
-        <a href="../open_tools/" class="bg-green-700 hover:bg-green-800 transition p-6 rounded-2xl shadow-xl text-white text-center">
-            <h2 class="text-2xl font-bold mb-2">🛠️ Open Tools</h2>
-            <p>Firmware, ML pipelines, and more.</p>
-        </a>
-
-        <!-- FRONTIERS -->
-        <a href="../docs/emerging_frontiers.md" class="bg-yellow-600 hover:bg-yellow-700 transition p-6 rounded-2xl shadow-xl text-white text-center">
-            <h2 class="text-2xl font-bold mb-2">🚀 Emerging Frontiers</h2>
-            <p>Riemann, AI, Quantum, and Consciousness.</p>
-        </a>
-    </main>
-
-    <!-- GLOWING BUTTON -->
-    <div class="flex justify-center mt-10 mb-20"> <!-- Added mb-20 for spacing before footer -->
-        <a href="../docs/index.md" class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white text-xl font-bold shadow-lg animate-pulse hover:scale-105 transform transition">
-            🌌 Enter the Codex
-        </a>
+            <!-- Emerging Frontiers Tile -->
+            <a href="/docs/emerging_frontiers.md" class="tile-link p-8 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Emerging Frontiers</h3>
+                    <p class="mt-2 text-slate-400">A look at the big-picture hypotheses and implications.</p>
+                </div>
+                <div class="mt-4 text-purple-400 font-semibold flex items-center">
+                    Explore the Future 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+            
+        </div>
     </div>
+    
+    <script>
+        document.getElementById('enter-button').addEventListener('click', function() {
+            // Scroll to the next section
+            document.getElementById('portal-tiles').scrollIntoView({ behavior: 'smooth' });
+        });
 
-    <footer class="w-full text-center py-8 px-4 bg-gray-900 bg-opacity-70 mt-auto">
-        <p class="text-gray-400 text-lg mb-2">
-            The Harmonic Doctrine: A Gift, Not a Product. Shared Freely.
-        </p>
-        <p class="text-gray-500 text-sm">
-            Bridging the Numerical Songline to Collective Consciousness.
-        </p>
-        <p class="text-gray-600 text-xs mt-4">
-            Built by Quad-AI. Steered by Node Director Joe.
-        </p>
-    </footer>
+        // Toggle visibility of the floating nav and the portal tiles
+        const portalTilesSection = document.getElementById('portal-tiles');
+        const floatingNav = document.getElementById('floating-nav');
+        let hasScrolled = false;
+
+        document.addEventListener('scroll', function() {
+            if (window.scrollY > window.innerHeight / 2 && !hasScrolled) {
+                // Show the portal tiles section with a fade-in effect
+                portalTilesSection.classList.remove('hidden');
+                setTimeout(() => {
+                    portalTilesSection.classList.add('opacity-100');
+                }, 10); // A small delay to allow the hidden class to be removed first
+
+                // Show the floating nav
+                floatingNav.classList.remove('hidden');
+                setTimeout(() => {
+                    floatingNav.classList.add('opacity-100');
+                }, 10);
+                hasScrolled = true;
+            } else if (window.scrollY === 0) {
+                 // Reset if the user scrolls back to the top
+                portalTilesSection.classList.add('hidden', 'opacity-0');
+                floatingNav.classList.add('hidden', 'opacity-0');
+                hasScrolled = false;
+            }
+        });
+    </script>
 </body>
 </html>
