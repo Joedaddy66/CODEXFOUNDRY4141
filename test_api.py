@@ -23,6 +23,9 @@ client = TestClient(app)
 TEST_TOKEN = "demo-token-replace-in-production"
 AUTH_HEADERS = {"Authorization": f"Bearer {TEST_TOKEN}"}
 
+# Test constants
+NONEXISTENT_RUN_ID = "00000000-0000-0000-0000-000000000000"
+
 
 def create_test_analysis():
     """Helper function to create a test analysis and return run_id"""
@@ -174,7 +177,7 @@ def test_get_report_not_found():
     """Test retrieving report for non-existent run_id"""
     # Use a valid UUID format that doesn't exist
     response = client.get(
-        "/api/longevity/report/00000000-0000-0000-0000-000000000000",
+        f"/api/longevity/report/{NONEXISTENT_RUN_ID}",
         headers=AUTH_HEADERS
     )
     
@@ -252,7 +255,7 @@ def test_deploy_model_short_keys():
 def test_deploy_model_not_found():
     """Test deployment fails for non-existent run_id"""
     deploy_data = {
-        "run_id": "00000000-0000-0000-0000-000000000000",  # Valid UUID format but doesn't exist
+        "run_id": NONEXISTENT_RUN_ID,  # Valid UUID format but doesn't exist
         "human_key": "human-approval-key-12345678",
         "logic_key": "logic-validation-key-87654321"
     }

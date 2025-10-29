@@ -156,7 +156,6 @@ def validate_run_id(run_id: str) -> str:
     
     Security: This function provides defense-in-depth against path injection:
     1. Strict UUID format validation (8-4-4-4-12 hex pattern)
-    2. Explicit check for path traversal characters (.. / \\)
     
     Only allows UUID format (alphanumeric and hyphens).
     
@@ -170,16 +169,12 @@ def validate_run_id(run_id: str) -> str:
         Validated run_id string (guaranteed to be safe UUID format)
     
     Raises:
-        HTTPException: If run_id doesn't match UUID format or contains path traversal
+        HTTPException: If run_id doesn't match UUID format
     """
-    # Check if run_id matches UUID format
+    # Check if run_id matches UUID format (only allows hex digits and hyphens)
     uuid_pattern = re.compile(r'^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$', re.IGNORECASE)
     if not uuid_pattern.match(run_id):
         raise HTTPException(status_code=400, detail="Invalid run_id format. Must be a valid UUID.")
-    
-    # Additional check: ensure no path traversal characters (defense in depth)
-    if '..' in run_id or '/' in run_id or '\\' in run_id:
-        raise HTTPException(status_code=400, detail="Invalid run_id: path traversal not allowed")
     
     return run_id
 
