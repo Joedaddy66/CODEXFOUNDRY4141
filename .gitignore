@@ -52,3 +52,6 @@ _site/ # Jekyll/Hugo output
 *.elf
 *.uf2
 *.pyboard
+
+# Artifacts directory (API generated files)
+artifacts/
