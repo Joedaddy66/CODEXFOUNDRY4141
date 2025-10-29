@@ -18,6 +18,15 @@ A FastAPI-based microservice for serving RA Longevity analysis artifacts, provid
 - Python 3.9+
 - pip
 
+### Security Note
+
+⚠️ **Important**: The requirements.txt file specifies updated versions of dependencies to address known security vulnerabilities:
+- `fastapi==0.109.1` (fixes ReDoS vulnerability in <= 0.109.0)
+- `python-multipart==0.0.18` (fixes DoS and ReDoS vulnerabilities in <= 0.0.6)
+- `python-jose==3.4.0` (fixes algorithm confusion vulnerability in < 3.4.0)
+
+If you encounter installation issues, ensure you have a stable network connection and sufficient timeout settings.
+
 ### Setup
 
 1. Clone the repository:

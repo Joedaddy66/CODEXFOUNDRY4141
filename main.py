@@ -11,6 +11,7 @@ import os
 import json
 import uuid
 import zipfile
+import re
 from datetime import datetime, timezone
 from typing import Optional, Dict, Any
 from pathlib import Path
@@ -149,12 +150,49 @@ def calculate_ra_score_deltas(df_encoded: pd.DataFrame) -> dict:
     return deltas
 
 
+def validate_run_id(run_id: str) -> str:
+    """
+    Validate and sanitize run_id to prevent path traversal attacks.
+    
+    Security: This function provides defense-in-depth against path injection:
+    1. Strict UUID format validation (8-4-4-4-12 hex pattern)
+    2. Explicit check for path traversal characters (.. / \\)
+    
+    Only allows UUID format (alphanumeric and hyphens).
+    
+    Note: CodeQL may flag uses of validated_run_id as path injection,
+    but these are false positives as the validation ensures only safe UUIDs pass.
+    
+    Args:
+        run_id: User-provided run identifier
+    
+    Returns:
+        Validated run_id string (guaranteed to be safe UUID format)
+    
+    Raises:
+        HTTPException: If run_id doesn't match UUID format or contains path traversal
+    """
+    # Check if run_id matches UUID format
+    uuid_pattern = re.compile(r'^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$', re.IGNORECASE)
+    if not uuid_pattern.match(run_id):
+        raise HTTPException(status_code=400, detail="Invalid run_id format. Must be a valid UUID.")
+    
+    # Additional check: ensure no path traversal characters (defense in depth)
+    if '..' in run_id or '/' in run_id or '\\' in run_id:
+        raise HTTPException(status_code=400, detail="Invalid run_id: path traversal not allowed")
+    
+    return run_id
+
+
 def check_dkil(run_id: str, threshold: float = 0.5) -> tuple[bool, dict]:
     """
     Check DKIL (Data Knowledge Integrity Lock) status
     Returns: (passed, details)
     """
-    artifacts_path = ARTIFACTS_DIR / run_id
+    # Validate run_id to prevent path traversal
+    validated_run_id = validate_run_id(run_id)
+    
+    artifacts_path = ARTIFACTS_DIR / validated_run_id
     dkil_file = artifacts_path / "dkil_lock.json"
     
     if not dkil_file.exists():
@@ -358,7 +396,10 @@ async def get_report(
     - Returns JSON by default, HTML if format=html
     """
     try:
-        run_artifacts_dir = ARTIFACTS_DIR / run_id
+        # Validate run_id to prevent path traversal
+        validated_run_id = validate_run_id(run_id)
+        
+        run_artifacts_dir = ARTIFACTS_DIR / validated_run_id
         
         if not run_artifacts_dir.exists():
             raise HTTPException(status_code=404, detail=f"Run ID {run_id} not found")
@@ -366,7 +407,7 @@ async def get_report(
         # Check DKIL if lock file exists
         dkil_file = run_artifacts_dir / "dkil_lock.json"
         if dkil_file.exists():
-            passed, dkil_data = check_dkil(run_id)
+            passed, dkil_data = check_dkil(validated_run_id)
             if not passed:
                 raise HTTPException(
                     status_code=403, 
@@ -408,13 +449,17 @@ async def deploy_model(
     """
     try:
         run_id = deploy_request.run_id
-        run_artifacts_dir = ARTIFACTS_DIR / run_id
+        
+        # Validate run_id to prevent path traversal
+        validated_run_id = validate_run_id(run_id)
+        
+        run_artifacts_dir = ARTIFACTS_DIR / validated_run_id
         
         if not run_artifacts_dir.exists():
             raise HTTPException(status_code=404, detail=f"Run ID {run_id} not found")
         
         # Validate DKIL
-        passed, dkil_data = check_dkil(run_id)
+        passed, dkil_data = check_dkil(validated_run_id)
         if not passed:
             raise HTTPException(
                 status_code=403,

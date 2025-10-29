@@ -172,8 +172,9 @@ def test_get_report_html():
 
 def test_get_report_not_found():
     """Test retrieving report for non-existent run_id"""
+    # Use a valid UUID format that doesn't exist
     response = client.get(
-        "/api/longevity/report/nonexistent-run-id",
+        "/api/longevity/report/00000000-0000-0000-0000-000000000000",
         headers=AUTH_HEADERS
     )
     
@@ -251,7 +252,7 @@ def test_deploy_model_short_keys():
 def test_deploy_model_not_found():
     """Test deployment fails for non-existent run_id"""
     deploy_data = {
-        "run_id": "nonexistent-run-id",
+        "run_id": "00000000-0000-0000-0000-000000000000",  # Valid UUID format but doesn't exist
         "human_key": "human-approval-key-12345678",
         "logic_key": "logic-validation-key-87654321"
     }
@@ -263,6 +264,17 @@ def test_deploy_model_not_found():
     )
     
     assert response.status_code == 404
+
+
+def test_invalid_run_id_format():
+    """Test that invalid run_id format is rejected"""
+    # Test with invalid UUID
+    response = client.get(
+        "/api/longevity/report/invalid-uuid",
+        headers=AUTH_HEADERS
+    )
+    assert response.status_code == 400
+    assert "Invalid run_id format" in response.json()["detail"]
 
 
 def test_ra_feature_encoding():

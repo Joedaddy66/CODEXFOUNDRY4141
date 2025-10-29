@@ -180,7 +180,7 @@ def main():
     print("RA Longevity MLOps API - Example Usage")
     print("=" * 60)
     print(f"API URL: {BASE_URL}")
-    print(f"Token: {API_TOKEN[:20]}...")
+    print(f"Token: {'*' * 20}...")  # Masked for security
     
     # Check if server is running
     try:
