@@ -33,7 +33,7 @@ export API_KEY_SECRET_NAME="CODEX_API_KEY" # <--- FILLED IN
 # This command uses Google Cloud Build to create your Docker image
 # It automatically pushes the finished image to your Artifact Registry
 echo "Building and pushing Docker image..."
-gcloud builds submit --tag $IMAGE_LOCATION
+gcloud builds submit --tag "$IMAGE_LOCATION"
 
 
 # =================================================================
@@ -43,14 +43,14 @@ gcloud builds submit --tag $IMAGE_LOCATION
 # This is the final deployment command.
 # It wires up your service account, secrets, and other settings.
 echo "Deploying to Cloud Run..."
-gcloud run deploy $SERVICE_NAME \
-  --image $IMAGE_LOCATION \
-  --region $REGION \
+gcloud run deploy "$SERVICE_NAME" \
+  --image "$IMAGE_LOCATION" \
+  --region "$REGION" \
   --platform managed \
   --allow-unauthenticated \
   --port 8000 \
-  --service-account=$SA_EMAIL \
-  --update-secrets=CODEX_API_KEY=$API_KEY_SECRET_NAME:latest
+  --service-account="$SA_EMAIL" \
+  --update-secrets=CODEX_API_KEY="$API_KEY_SECRET_NAME":latest
 
   # --- If you have a DATABASE_URL secret, uncomment the line below ---
   # --update-secrets=CODEX_API_KEY=$API_KEY_SECRET_NAME:latest,DATABASE_URL=$DATABASE_URL_SECRET_NAME:latest
